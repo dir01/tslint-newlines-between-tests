@@ -1,9 +1,50 @@
-# tslint-custom-rules-boilerplate
+# tslint-newlines-between-tests
 
-A template for developing a custom TSLint rule, using unit testing.
+A tslint rule to ensure newlines between test members, for example, this
 
-Easiest developing cycle would be to change some tests (the `.spec` [file](src/myCustomRule.spec.ts)), change the [rule](src/myCustomRule.ts), and then run `npm test` to check everything is as expected.
+    describe('foo', () => {
+        beforeAll(setup);
+        afterAll(teardown);
+        beforeEach(setup);
+        afterEach(teardown);
+        it('should foo', () => {});
+        it('should not bar', () => {});
+    });
+    describe('bar', () => {
+        beforeAll(setup);
+        afterAll(teardown);
+        beforeEach(setup);
+        afterEach(teardown);
+        it('should bar', () => {});
+        it('should not foo', () => {});
+    });
 
-Inside the [test file](src/myCustomRule.spec.ts) you have a minimal working example of how to test failures (including position and messages), successes and fixers.
+will become this:
 
-After your rule is ready you can compile it using `npm run build`, and use the results in the `dist` folder.
+    describe('foo', () => {
+        beforeAll(setup);
+
+        afterAll(teardown);
+
+        beforeEach(setup);
+
+        afterEach(teardown);
+
+        it('should foo', () => {});
+
+        it('should not bar', () => {});
+    });
+
+    describe('bar', () => {
+        beforeAll(setup);
+
+        afterAll(teardown);
+
+        beforeEach(setup);
+
+        afterEach(teardown);
+
+        it('should bar', () => {});
+
+        it('should not foo', () => {});
+    });
