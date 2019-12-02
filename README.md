@@ -1,7 +1,7 @@
 # tslint-newlines-between-tests
 
 A tslint rule to ensure newlines between test members, for example, this
-
+```typescript
     describe('foo', () => {
         beforeAll(setup);
         afterAll(teardown);
@@ -18,9 +18,10 @@ A tslint rule to ensure newlines between test members, for example, this
         it('should bar', () => {});
         it('should not foo', () => {});
     });
+```
 
 will become this:
-
+```typescript
     describe('foo', () => {
         beforeAll(setup);
 
@@ -48,3 +49,4 @@ will become this:
 
         it('should not foo', () => {});
     });
+```
