@@ -26,7 +26,7 @@ describe('module-level tests', () => {
         test('foo', ()=>{});
         test('bar', ()=>{});`;
         const startPosition = src.indexOf(`test('bar`);
-        const endPosition = startPosition
+        const endPosition = startPosition + "test".length
         const failure = helper({ src, rule }).failures[0];
 
         expect(failure.getStartPosition().getPosition()).toEqual(startPosition);

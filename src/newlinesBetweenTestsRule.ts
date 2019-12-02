@@ -4,6 +4,16 @@ import { getPreviousToken } from "tsutils";
 
 
 export class Rule extends Lint.Rules.AbstractRule {
+    public static metadata: Lint.IRuleMetadata = {
+        ruleName: 'newlines-between-tests',
+        hasFix: true,
+        type: 'formatting',
+        description: '',
+        options: null,
+        optionExamples: null,
+        optionsDescription: null,
+        typescriptOnly: false
+    }
     static FAILURE_STRING = 'Test members should be separated by a newline';
 
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
@@ -38,14 +48,13 @@ class Walk extends Lint.AbstractWalker {
         const sourceText = this.sourceFile.getFullText()
         const hasNewLine = sourceText.substring(colonEnd + 1, callStart).includes('\n')
         if (!hasNewLine) {
-            const fixer = Lint.Replacement.replaceFromTo(
+            const fixer: Lint.Fix = Lint.Replacement.replaceFromTo(
                 colonEnd + 1,
                 colonEnd + 1,
                 '\n'
             );
-            this.addFailure(callStart, callStart, Rule.FAILURE_STRING, fixer)
+            this.addFailureAt(callStart, fnName.length, Rule.FAILURE_STRING, fixer)
         }
-
     }
 
 }
