@@ -6,10 +6,6 @@
     "build": "tsc",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/eranshabi/tslint-custom-rules-boilerplate.git"
-  },
   "dependencies": {
     "tslint": "^5.20.0"
   },
@@ -33,10 +29,14 @@
     ],
     "testEnvironment": "node"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dir01/tslint-newlines-between-tests.git"
+  },
+  "author": "Andrey Zhukovskiy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eranshabi/tslint-custom-rules-boilerplate/issues"
+    "url": "https://github.com/dir01/tslint-newlines-between-tests/issues"
   },
-  "homepage": "https://github.com/eranshabi/tslint-custom-rules-boilerplate#readme"
+  "homepage": "https://github.com/dir01/tslint-newlines-between-tests"
 }
